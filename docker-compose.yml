@@ -1,13 +1,16 @@
-version: '2'
+version: '3'
 services:
-  db:
-    image: postgres
+  pg:
+    image: postgres:10
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
   web:
     build: .
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: "postgres://postgres@db:5432/postgres"
-      BLAZER_DATABASE_URL: "postgres://postgres@db:5432/postgres"
+      DATABASE_URL: "postgres://postgres@pg:5432/postgres"
+      BLAZER_DATABASE_URL: "postgres://postgres@pg:5432/postgres"
+      SECRET_KEY_BASE: "6ec9d2bdc94c44827dfed61b063ba7135fa4aa29f89d179294ed65d1a5671bd50754b5d39119cd562abb584a32cd51c61e768b000ed597ff2728b414bbef7655"
     depends_on:
-      - db
+      - pg
