@@ -1,1 +1,3 @@
 /postgres-data
+/assets
+/rails_app/public/assets/**/*
