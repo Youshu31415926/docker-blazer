@@ -12,7 +12,7 @@ Here's how you'd get up and going running a blazer container from scratch using 
 git clone git@github.com:eliotk/docker-blazer.git
 cd docker-blazer
 docker-compose build
-docker-compose up
+BLAZER_DATABASE_URL=postgres://postgres@host.docker.internal:5432/pi_dev docker-compose up
 open http://localhost:3000
 ```
 
